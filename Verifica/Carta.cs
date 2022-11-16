@@ -11,7 +11,7 @@ namespace Verifica
 
         private string _ID;
         private string _PIN;
-        private Conto _conto;
+        public Conto _conto;
 
         public Carta(string id, string pin, Conto conto)
         {

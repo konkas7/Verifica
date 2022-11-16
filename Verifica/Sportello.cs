@@ -12,12 +12,14 @@ namespace Verifica
         private string _Indirizzo;
         private string _Banca;
         private Carta carta;
+        private string[] _carte_bloccate;
 
-        public Sportello(string id, string indirizzo, string banca)
+        public Sportello(string id, string indirizzo, string banca, string[] carte_bloccate)
         {
             ID = id;
             Indirizzo = indirizzo;
             Banca = banca;
+            _carte_bloccate = carte_bloccate;
         }
 
         public string ID
@@ -40,10 +42,36 @@ namespace Verifica
 
         public Carta inserisci(Carta carta)
         {
+            for(int i = 0; i<_carte_bloccate.Length; i++)
+            {
+                if(carta.ID == _carte_bloccate[i])
+                {
+                    throw new Exception("Carta bloccata!");
+                }
+                
+                    
+            }
             return carta;
+
         }
 
+        public Carta rimuovi(Carta carta)
+        {
+            return null;
+        }
 
+        
+
+
+        public void deposita(Carta carta, float somma)
+        {
+            carta.deposita(carta._conto, 40);
+        }
+
+        public void preleva(Carta carta, float somma)
+        {
+            carta.preleva(carta._conto, 40);
+        }
         
 
         
